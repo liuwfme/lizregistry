@@ -1,0 +1,33 @@
+
+### 获取所有服务实例
+GET http://localhost:8484/findAll?serviceName=cn.liz.lizrpc.UserService
+
+### 注册实例
+POST http://localhost:8484/register?serviceName=cn.liz.lizrpc.UserService
+Content-Type: application/json
+
+{
+  "context": "lizrpc",
+  "host": "127.0.0.1",
+  "port": 8082,
+  "scheme": "http",
+  "status": false,
+  "parameters": {
+    "env": "dev",
+    "tag": "red"
+  }
+}
+
+### 取消注册
+POST http://localhost:8484/unregister?serviceName=cn.liz.lizrpc.UserService
+Content-Type: application/json
+
+{
+  "context": "lizrpc",
+  "host": "127.0.0.1",
+  "port": 8081,
+  "scheme": "http"
+}
+
+
+
