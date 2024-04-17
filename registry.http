@@ -29,5 +29,21 @@ Content-Type: application/json
   "scheme": "http"
 }
 
+### 获取版本号
+GET http://localhost:8484/version?service=cn.liz.lizrpc.UserService
+
+### 获取当前节点
+GET http://localhost:8484/info
+###
+GET http://localhost:8485/info
+###
+GET http://localhost:8486/info
+###
+GET http://localhost:8486/cluster
+
+###
+GET http://localhost:8485/setLeader
+
+
 
 

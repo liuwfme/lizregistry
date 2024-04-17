@@ -1,5 +1,7 @@
 package cn.liz.lizregistry.controller;
 
+import cn.liz.lizregistry.cluster.Cluster;
+import cn.liz.lizregistry.cluster.Server;
 import cn.liz.lizregistry.model.InstanceMeta;
 import cn.liz.lizregistry.service.RegistryService;
 import lombok.extern.slf4j.Slf4j;
@@ -18,6 +20,9 @@ public class LizRegistryController {
 
     @Autowired
     RegistryService registryService;
+
+    @Autowired
+    Cluster cluster;
 
 
     @RequestMapping("/register")
@@ -60,6 +65,35 @@ public class LizRegistryController {
     public Map<String, Long> versions(@RequestParam String services) {
         log.info("======>> versions services:{}", services);
         return registryService.versions(services);
+    }
+
+    @RequestMapping("/info")
+    public Server info() {
+        Server server = cluster.self();
+        log.info("======>> info:{}", server);
+        return server;
+    }
+
+    @RequestMapping("/cluster")
+    public List<Server> cluster() {
+        List<Server> servers = cluster.getServers();
+        log.info("======>> cluster:{}", servers);
+        return servers;
+    }
+
+    @RequestMapping("/leader")
+    public Server leader() {
+        Server server = cluster.leader();
+        log.info("======>> leader:{}", server);
+        return server;
+    }
+
+    @RequestMapping("/setLeader")
+    public Server setLeader() {
+        Server server = cluster.self();
+        server.setLeader(true);
+        log.info("======>> setLeader:{}", server);
+        return server;
     }
 
 }

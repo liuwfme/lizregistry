@@ -15,10 +15,13 @@ import java.util.stream.Collectors;
 @Slf4j
 public class LizRegistryService implements RegistryService {
 
+    // k：服务名；v：实例
     final static MultiValueMap<String, InstanceMeta> REGISTRY = new LinkedMultiValueMap<>();
 
+    // k：服务名；v：版本号
     final static Map<String, Long> VERSIONS = new ConcurrentHashMap<>();
 
+    // k：服务名+实例url；v：实例最后一次探活的时间戳
     public final static Map<String, Long> TIMESTAMPS = new ConcurrentHashMap<>();
 
     final static AtomicLong VERSION = new AtomicLong(0);
