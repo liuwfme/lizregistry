@@ -2,14 +2,17 @@
 ### 获取所有服务实例
 GET http://localhost:8484/findAll?serviceName=cn.liz.lizrpc.UserService
 
+### 获取所有服务实例
+GET http://localhost:8485/findAll?serviceName=cn.liz.lizrpc.UserService
+
 ### 注册实例
-POST http://localhost:8484/register?serviceName=cn.liz.lizrpc.UserService
+POST http://localhost:8485/register?serviceName=cn.liz.lizrpc.UserService
 Content-Type: application/json
 
 {
   "context": "lizrpc",
   "host": "127.0.0.1",
-  "port": 8082,
+  "port": 8083,
   "scheme": "http",
   "status": false,
   "parameters": {
@@ -43,6 +46,9 @@ GET http://localhost:8486/cluster
 
 ###
 GET http://localhost:8485/setLeader
+
+###
+GET http://localhost:8484/snapshot
 
 
 
