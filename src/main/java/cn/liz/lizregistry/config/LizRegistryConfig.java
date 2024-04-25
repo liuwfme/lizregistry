@@ -16,10 +16,10 @@ public class LizRegistryConfig {
         return new LizRegistryService();
     }
 
-//    @Bean(initMethod = "start", destroyMethod = "stop")
-//    public HealthChecker healthChecker(@Autowired RegistryService registryService) {
-//        return new LizHealthChecker(registryService);
-//    }
+    @Bean(initMethod = "start", destroyMethod = "stop")
+    public HealthChecker healthChecker(@Autowired RegistryService registryService) {
+        return new LizHealthChecker(registryService);
+    }
 
     @Bean(initMethod = "init")
     public Cluster cluster(@Autowired LizRegistryConfigProperties properties) {

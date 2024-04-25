@@ -27,10 +27,10 @@ public class LizRegistryController {
     Cluster cluster;
 
     @RequestMapping("/register")
-    public void register(String serviceName, @RequestBody InstanceMeta instanceMeta) {
+    public void register(String service, @RequestBody InstanceMeta instanceMeta) {
         checkLeader();
-        log.info("======>> register service:{}, instance:{}", serviceName, instanceMeta);
-        registryService.register(serviceName, instanceMeta);
+        log.info("======>> register service:{}, instance:{}", service, instanceMeta);
+        registryService.register(service, instanceMeta);
     }
 
     private void checkLeader() {
@@ -40,30 +40,30 @@ public class LizRegistryController {
     }
 
     @RequestMapping("/unregister")
-    public void unregister(String serviceName, @RequestBody InstanceMeta instanceMeta) {
+    public void unregister(String service, @RequestBody InstanceMeta instanceMeta) {
         checkLeader();
-        log.info("======>> unregister service:{}, instance:{}", serviceName, instanceMeta);
-        registryService.unregister(serviceName, instanceMeta);
+        log.info("======>> unregister service:{}, instance:{}", service, instanceMeta);
+        registryService.unregister(service, instanceMeta);
     }
 
     @RequestMapping("/findAll")
-    public List<InstanceMeta> findAllInstances(String serviceName) {
-        log.info("======>> findAllInstances service:{}", serviceName);
-        return registryService.getAllInstances(serviceName);
+    public List<InstanceMeta> findAllInstances(String service) {
+        log.info("======>> findAllInstances service:{}", service);
+        return registryService.getAllInstances(service);
     }
 
     @RequestMapping("/renew")
-    public long renew(String serviceName, @RequestBody InstanceMeta instanceMeta) {
+    public long renew(String service, @RequestBody InstanceMeta instanceMeta) {
         checkLeader();
-        log.info("======>> renew service:{}, instance:{}", serviceName, instanceMeta);
-        return registryService.renew(instanceMeta, serviceName);
+        log.info("======>> renew service:{}, instance:{}", service, instanceMeta);
+        return registryService.renew(instanceMeta, service);
     }
 
     @RequestMapping("/renews")
-    public long renews(String serviceNames, @RequestBody InstanceMeta instanceMeta) {
+    public long renews(String services, @RequestBody InstanceMeta instanceMeta) {
         checkLeader();
-        log.info("======>> renews services:{}, instance:{}", serviceNames, instanceMeta);
-        return registryService.renew(instanceMeta, serviceNames.split(","));
+        log.info("======>> renews services:{}, instance:{}", services, instanceMeta);
+        return registryService.renew(instanceMeta, services.split(","));
     }
 
     @RequestMapping("/version")

@@ -1,12 +1,12 @@
 
 ### 获取所有服务实例
-GET http://localhost:8484/findAll?serviceName=cn.liz.lizrpc.UserService
+GET http://localhost:8484/findAll?service=app1_public_dev_cn.liz.lizrpc.demo.api.UserService
 
 ### 获取所有服务实例
-GET http://localhost:8485/findAll?serviceName=cn.liz.lizrpc.UserService
+GET http://localhost:8485/findAll?service=cn.liz.lizrpc.UserService
 
 ### 注册实例
-POST http://localhost:8485/register?serviceName=cn.liz.lizrpc.UserService
+POST http://localhost:8485/register?service=cn.liz.lizrpc.UserService
 Content-Type: application/json
 
 {
@@ -22,7 +22,7 @@ Content-Type: application/json
 }
 
 ### 取消注册
-POST http://localhost:8484/unregister?serviceName=cn.liz.lizrpc.UserService
+POST http://localhost:8484/unregister?service=cn.liz.lizrpc.UserService
 Content-Type: application/json
 
 {
